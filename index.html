@@ -128,10 +128,131 @@
       background-size: 60px 60px;
     }
 
+    .hero-layout {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 4rem;
+      align-items: center;
+      width: 100%;
+    }
+
+    /* ── PERSON CARD ── */
+    .hero-person-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .hero-person-photo {
+      width: 100%;
+      aspect-ratio: 3/4;
+      border-radius: 12px 12px 0 0;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-bottom: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-person-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+
+    .hero-person-photo-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .hero-person-photo-placeholder svg {
+      opacity: 0.3;
+    }
+
+    .hero-person-photo-placeholder span {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.5px;
+    }
+
+    .hero-person-info {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-top: 2px solid var(--gold);
+      border-radius: 0 0 12px 12px;
+      padding: 1.25rem 1.5rem 1rem;
+    }
+
+    .hero-person-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.2rem;
+    }
+
+    .hero-person-role {
+      font-size: 0.78rem;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 0.15rem;
+    }
+
+    .hero-person-exp {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* ── ERSTE BADGE ── */
+    .erste-badge {
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-left: 3px solid #c00000;
+      border-radius: 6px;
+      padding: 0.65rem 1rem;
+    }
+
+    .erste-badge-logo {
+      font-size: 1rem;
+      font-weight: 900;
+      color: #e00;
+      letter-spacing: -0.5px;
+      font-family: Arial, sans-serif;
+      line-height: 1;
+    }
+
+    .erste-badge-text {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.35;
+    }
+
+    .erste-badge-text strong {
+      display: block;
+      color: rgba(255,255,255,0.85);
+      font-size: 0.72rem;
+      letter-spacing: 0.3px;
+    }
+
     .hero-content {
       position: relative;
       z-index: 2;
-      max-width: 700px;
+      max-width: 620px;
     }
 
     .hero-badge {
@@ -621,6 +742,11 @@
       .nav-links.open { display: flex; }
       .hamburger { display: flex; }
 
+      .hero-layout { grid-template-columns: 1fr; gap: 2.5rem; padding: 6rem 0 3rem; }
+      .hero-person-card { flex-direction: row; align-items: stretch; }
+      .hero-person-photo { aspect-ratio: 1/1; width: 120px; min-width: 120px; border-radius: 12px 0 0 12px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.12); }
+      .hero-person-info { border-radius: 0 12px 12px 0; border-top: 1px solid rgba(255,255,255,0.12); border-left: 2px solid var(--gold); flex: 1; }
+
       #rolunk { grid-template-columns: 1fr; }
       .why-image-block { order: -1; }
 
@@ -661,34 +787,65 @@
 <section id="fooldal">
   <div class="hero-bg-pattern"></div>
   <div class="hero-grid"></div>
-  <div class="hero-content">
-    <div class="hero-badge">⚡ Licencelt befektetési tanácsadás</div>
-    <h1 class="hero-title">
-      A tőzsde világa<br />
-      <em>közelebb van,</em><br />
-      mint gondolná.
-    </h1>
-    <p class="hero-sub">
-      Professzionális brókerszolgáltatás, személyre szabott portfólió-tanácsadás és közvetlen tőzsdei hozzáférés — egyszerűen, átláthatóan.
-    </p>
-    <div class="hero-buttons">
-      <a href="#kapcsolat" class="btn-primary">Vegyük fel a kapcsolatot</a>
-      <a href="#szolgaltatasok" class="btn-outline">Tudjon meg többet</a>
+  <div class="hero-layout">
+
+    <!-- BAL OLDAL: személy kártya -->
+    <div class="hero-person-card">
+      <div class="hero-person-photo" id="person-photo">
+        <!-- Ha van kép: cserélje le ezt a div-et: <img src="kiss-zoltan.jpg" alt="Kiss Zoltán" /> -->
+        <div class="hero-person-photo-placeholder">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+            <circle cx="32" cy="22" r="14" fill="white"/>
+            <path d="M4 58c0-15.464 12.536-28 28-28s28 12.536 28 28" fill="white"/>
+          </svg>
+          <span>Kép helye</span>
+        </div>
+      </div>
+      <div class="hero-person-info">
+        <div class="hero-person-name">Kiss Zoltán</div>
+        <div class="hero-person-role">Befektetési szakértő</div>
+        <div class="hero-person-exp">Több mint 30 év tapasztalattal</div>
+      </div>
+      <div class="erste-badge">
+        <div class="erste-badge-logo">ERSTE</div>
+        <div class="erste-badge-text">
+          <strong>Erste Befektetési Zrt.</strong>
+          független partnere
+        </div>
+      </div>
     </div>
-    <div class="hero-stats">
-      <div class="stat-item">
-        <div class="stat-num">12+</div>
-        <div class="stat-label">Év tapasztalat</div>
+
+    <!-- JOBB OLDAL: fő tartalom -->
+    <div class="hero-content">
+      <div class="hero-badge">⚡ Licencelt befektetési tanácsadás</div>
+      <h1 class="hero-title">
+        A tőzsde világa<br />
+        <em>közelebb van,</em><br />
+        mint gondolná.
+      </h1>
+      <p class="hero-sub">
+        Professzionális brókerszolgáltatás, személyre szabott portfólió-tanácsadás és közvetlen tőzsdei hozzáférés — egyszerűen, átláthatóan.
+      </p>
+      <div class="hero-buttons">
+        <a href="#kapcsolat" class="btn-primary">Vegyük fel a kapcsolatot</a>
+        <a href="#szolgaltatasok" class="btn-outline">Tudjon meg többet</a>
       </div>
-      <div class="stat-item">
-        <div class="stat-num">300+</div>
-        <div class="stat-label">Elégedett ügyfél</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">24h</div>
-        <div class="stat-label">Visszahívás</div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">30+</div>
+          <div class="stat-label">Év tapasztalat</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">300+</div>
+          <div class="stat-label">Elégedett ügyfél</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">24h</div>
+          <div class="stat-label">Visszahívás</div>
+        </div>
       </div>
     </div>
+
   </div>
 </section>
 
