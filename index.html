@@ -132,7 +132,7 @@
       position: relative;
       z-index: 2;
       display: grid;
-      grid-template-columns: 280px 1fr;
+      grid-template-columns: 1fr 280px;
       gap: 4rem;
       align-items: center;
       width: 100%;
@@ -789,33 +789,7 @@
   <div class="hero-grid"></div>
   <div class="hero-layout">
 
-    <!-- BAL OLDAL: személy kártya -->
-    <div class="hero-person-card">
-      <div class="hero-person-photo" id="person-photo">
-        <!-- Ha van kép: cserélje le ezt a div-et: <img src="kiss-zoltan.jpg" alt="Kiss Zoltán" /> -->
-        <div class="hero-person-photo-placeholder">
-          <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-            <circle cx="32" cy="22" r="14" fill="white"/>
-            <path d="M4 58c0-15.464 12.536-28 28-28s28 12.536 28 28" fill="white"/>
-          </svg>
-          <span>Kép helye</span>
-        </div>
-      </div>
-      <div class="hero-person-info">
-        <div class="hero-person-name">Kiss Zoltán</div>
-        <div class="hero-person-role">Befektetési szakértő</div>
-        <div class="hero-person-exp">Több mint 30 év tapasztalattal</div>
-      </div>
-      <div class="erste-badge">
-        <div class="erste-badge-logo">ERSTE</div>
-        <div class="erste-badge-text">
-          <strong>Erste Befektetési Zrt.</strong>
-          független partnere
-        </div>
-      </div>
-    </div>
-
-    <!-- JOBB OLDAL: fő tartalom -->
+    <!-- BAL OLDAL: fő tartalom -->
     <div class="hero-content">
       <div class="hero-badge">⚡ Licencelt befektetési tanácsadás</div>
       <h1 class="hero-title">
@@ -842,6 +816,32 @@
         <div class="stat-item">
           <div class="stat-num">24h</div>
           <div class="stat-label">Visszahívás</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JOBB OLDAL: személy kártya -->
+    <div class="hero-person-card">
+      <div class="hero-person-photo" id="person-photo">
+        <!-- Ha van kép: cserélje le ezt a div-et: <img src="kiss-zoltan.jpg" alt="Kiss Zoltán" /> -->
+        <div class="hero-person-photo-placeholder">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+            <circle cx="32" cy="22" r="14" fill="white"/>
+            <path d="M4 58c0-15.464 12.536-28 28-28s28 12.536 28 28" fill="white"/>
+          </svg>
+          <span>Kép helye</span>
+        </div>
+      </div>
+      <div class="hero-person-info">
+        <div class="hero-person-name">Kiss Zoltán</div>
+        <div class="hero-person-role">Befektetési szakértő</div>
+        <div class="hero-person-exp">Több mint 30 év tapasztalattal</div>
+      </div>
+      <div class="erste-badge">
+        <div class="erste-badge-logo">ERSTE</div>
+        <div class="erste-badge-text">
+          <strong>Erste Befektetési Zrt.</strong>
+          független partnere
         </div>
       </div>
     </div>
