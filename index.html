@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dél-Szeg Kft. – Tőzsdei tanácsadás és brókerszolgáltatás</title>
+  <meta name="description" content="Professzionális befektetési tanácsadás, részvénykereskedés, deviza és állampapír szolgáltatások. Vegye fel velünk a kapcsolatot!" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0f1e3c;
+      --navy-mid: #162847;
+      --navy-light: #1e3a5f;
+      --gold: #c9a84c;
+      --gold-light: #e2c47a;
+      --white: #ffffff;
+      --off-white: #f8f7f4;
+      --gray: #6b7280;
+      --light-gray: #e5e7eb;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--navy);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      height: 72px;
+      background: rgba(15, 30, 60, 0.97);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--white);
+      letter-spacing: 1px;
+    }
+
+    .logo span { color: var(--gold); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--navy) !important;
+      padding: 0.5rem 1.25rem;
+      border-radius: 4px;
+      font-weight: 600 !important;
+    }
+
+    .nav-cta:hover { background: var(--gold-light); color: var(--navy) !important; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    /* ── HERO ── */
+    #fooldal {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 60%, #1a4a7a 100%);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 0 5%;
+    }
+
+    .hero-bg-pattern {
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 20% 50%, rgba(201,168,76,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(201,168,76,0.05) 0%, transparent 40%);
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(201,168,76,0.15);
+      border: 1px solid rgba(201,168,76,0.4);
+      color: var(--gold);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title em {
+      font-style: normal;
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.75);
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy);
+      padding: 0.9rem 2rem;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+    .btn-outline {
+      border: 2px solid rgba(255,255,255,0.4);
+      color: var(--white);
+      padding: 0.9rem 2rem;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+      display: inline-block;
+    }
+
+    .btn-outline:hover { border-color: var(--gold); background: rgba(201,168,76,0.1); }
+
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      margin-top: 4rem;
+      padding-top: 3rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .stat-item { text-align: left; }
+
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.6);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── SECTIONS COMMON ── */
+    section { padding: 6rem 5%; }
+
+    .section-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 1rem;
+    }
+
+    .section-sub {
+      font-size: 1rem;
+      color: var(--gray);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    .section-header { margin-bottom: 3.5rem; }
+
+    /* ── SERVICES ── */
+    #szolgaltatasok { background: var(--off-white); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 2rem 1.75rem;
+      border: 1px solid var(--light-gray);
+      transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+
+    .service-card:hover { border-color: var(--gold); box-shadow: 0 8px 32px rgba(15,30,60,0.1); transform: translateY(-3px); }
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--navy), var(--navy-light));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      font-size: 1.4rem;
+    }
+
+    .service-name {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--navy);
+      margin-bottom: 0.6rem;
+    }
+
+    .service-desc { font-size: 0.9rem; color: var(--gray); line-height: 1.65; }
+
+    /* ── WHY US ── */
+    #rolunk {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .why-image-block {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      border-radius: 12px;
+      padding: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .why-image-block::before {
+      content: '';
+      position: absolute;
+      bottom: -30px;
+      right: -30px;
+      width: 200px;
+      height: 200px;
+      background: rgba(201,168,76,0.1);
+      border-radius: 50%;
+    }
+
+    .why-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--white);
+      line-height: 1.5;
+      position: relative;
+      z-index: 1;
+    }
+
+    .why-quote::before {
+      content: '"';
+      font-size: 5rem;
+      color: var(--gold);
+      opacity: 0.4;
+      line-height: 0;
+      display: block;
+      margin-bottom: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .why-author {
+      margin-top: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .why-author-name { font-weight: 600; color: var(--gold); }
+    .why-author-role { font-size: 0.85rem; color: rgba(255,255,255,0.6); }
+
+    .why-points { display: flex; flex-direction: column; gap: 1.5rem; }
+
+    .why-point {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .why-point-icon {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      background: linear-gradient(135deg, rgba(201,168,76,0.15), rgba(201,168,76,0.05));
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+
+    .why-point-text h4 { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.25rem; }
+    .why-point-text p { font-size: 0.875rem; color: var(--gray); line-height: 1.6; }
+
+    /* ── PROCESS ── */
+    #folyamat { background: var(--navy); }
+
+    #folyamat .section-title { color: var(--white); }
+    #folyamat .section-sub { color: rgba(255,255,255,0.6); }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      position: relative;
+    }
+
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 32px;
+      left: calc(16.67% + 1rem);
+      right: calc(16.67% + 1rem);
+      height: 1px;
+      background: linear-gradient(90deg, var(--gold), rgba(201,168,76,0.3) 50%, var(--gold));
+    }
+
+    .process-step { text-align: center; position: relative; }
+
+    .step-num {
+      width: 64px;
+      height: 64px;
+      background: var(--gold);
+      color: var(--navy);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-title { font-weight: 700; font-size: 1rem; color: var(--white); margin-bottom: 0.5rem; }
+    .step-desc { font-size: 0.875rem; color: rgba(255,255,255,0.6); line-height: 1.65; }
+
+    /* ── CONTACT ── */
+    #kapcsolat {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .contact-info { padding-top: 0.5rem; }
+
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-detail-icon {
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      background: var(--navy);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: var(--gold);
+    }
+
+    .contact-detail-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--gray); }
+    .contact-detail-value { font-weight: 600; color: var(--navy); font-size: 0.95rem; }
+
+    /* ── FORM ── */
+    .contact-form {
+      background: var(--off-white);
+      border-radius: 12px;
+      padding: 2.5rem;
+      border: 1px solid var(--light-gray);
+    }
+
+    .form-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+
+    .form-sub { font-size: 0.875rem; color: var(--gray); margin-bottom: 2rem; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+
+    .form-group label { font-size: 0.8rem; font-weight: 600; color: var(--navy); letter-spacing: 0.3px; }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 0.75rem 1rem;
+      border: 1.5px solid var(--light-gray);
+      border-radius: 6px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: var(--navy);
+      background: var(--white);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201,168,76,0.15);
+    }
+
+    .form-group textarea { resize: vertical; min-height: 110px; }
+
+    .form-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-check input[type="checkbox"] { margin-top: 3px; accent-color: var(--gold); }
+
+    .form-check label { font-size: 0.8rem; color: var(--gray); line-height: 1.5; }
+
+    .form-check a { color: var(--gold); }
+
+    .btn-submit {
+      width: 100%;
+      padding: 1rem;
+      background: var(--navy);
+      color: var(--white);
+      border: none;
+      border-radius: 6px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-submit:hover { background: var(--navy-light); transform: translateY(-1px); }
+
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .form-success .success-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .form-success h3 { font-family: 'Playfair Display', serif; color: var(--navy); margin-bottom: 0.5rem; }
+    .form-success p { color: var(--gray); font-size: 0.9rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      padding: 3rem 5% 2rem;
+      border-top: 1px solid rgba(201,168,76,0.2);
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 2rem;
+      flex-wrap: wrap;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 2rem;
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--white);
+    }
+
+    .footer-logo span { color: var(--gold); }
+    .footer-tagline { font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-top: 0.4rem; }
+
+    .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--gold); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-copy { font-size: 0.8rem; color: rgba(255,255,255,0.4); }
+    .footer-legal { font-size: 0.75rem; color: rgba(255,255,255,0.3); }
+
+    /* ── KITÖLTENDŐ JELÖLÉSEK ── */
+    .todo {
+      background: #fff3cd;
+      border: 1px dashed #e6a817;
+      border-radius: 3px;
+      padding: 1px 6px;
+      color: #7a5500;
+      font-style: italic;
+      font-size: 0.9em;
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 900px) {
+      .nav-links { display: none; flex-direction: column; position: fixed; inset: 72px 0 0; background: var(--navy); padding: 2rem 5%; gap: 1.5rem; }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+
+      #rolunk { grid-template-columns: 1fr; }
+      .why-image-block { order: -1; }
+
+      .process-steps { grid-template-columns: 1fr; }
+      .process-steps::before { display: none; }
+
+      #kapcsolat { grid-template-columns: 1fr; gap: 3rem; }
+
+      .hero-stats { gap: 1.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      section { padding: 4rem 5%; }
+      #rolunk { padding: 4rem 5%; }
+      .hero-stats { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ──────────── NAV ──────────── -->
+<nav>
+  <div class="logo">Dél-Szeg<span>.</span></div>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#fooldal">Főoldal</a></li>
+    <li><a href="#szolgaltatasok">Szolgáltatások</a></li>
+    <li><a href="#rolunk">Rólunk</a></li>
+    <li><a href="#folyamat">Folyamat</a></li>
+    <li><a href="#kapcsolat" class="nav-cta">Kapcsolat</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menü">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ──────────── HERO ──────────── -->
+<section id="fooldal">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge">⚡ Licencelt befektetési tanácsadás</div>
+    <h1 class="hero-title">
+      A tőzsde világa<br />
+      <em>közelebb van,</em><br />
+      mint gondolná.
+    </h1>
+    <p class="hero-sub">
+      Professzionális brókerszolgáltatás, személyre szabott portfólió-tanácsadás és közvetlen tőzsdei hozzáférés — egyszerűen, átláthatóan.
+    </p>
+    <div class="hero-buttons">
+      <a href="#kapcsolat" class="btn-primary">Vegyük fel a kapcsolatot</a>
+      <a href="#szolgaltatasok" class="btn-outline">Tudjon meg többet</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">12+</div>
+        <div class="stat-label">Év tapasztalat</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">300+</div>
+        <div class="stat-label">Elégedett ügyfél</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">24h</div>
+        <div class="stat-label">Visszahívás</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────── SERVICES ──────────── -->
+<section id="szolgaltatasok">
+  <div class="section-header">
+    <div class="section-tag">Szolgáltatásaink</div>
+    <h2 class="section-title">Mindent egy helyen</h2>
+    <p class="section-sub">Teljes körű befektetési megoldások kezdőknek és tapasztalt befektetőknek egyaránt.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">📈</div>
+      <div class="service-name">Részvénykereskedés</div>
+      <p class="service-desc">Hazai és nemzetközi tőzsdei részvények adásvétele, valós idejű piaci adatokkal és szakértői elemzéssel.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💱</div>
+      <div class="service-name">Deviza (Forex)</div>
+      <p class="service-desc">Devizapiac kereskedés széleskörű árfolyampárokkal, versenyképes spreadekkel és gyors végrehajtással.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📊</div>
+      <div class="service-name">Befektetési alapok</div>
+      <p class="service-desc">Gondosan válogatott befektetési alapok a konzervatívtól az agresszív kockázatvállalásig.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏛️</div>
+      <div class="service-name">Állampapírok</div>
+      <p class="service-desc">Magyar és európai állampapírok biztonságos, alacsony kockázatú befektetési lehetőségként.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────── WHY US ──────────── -->
+<section id="rolunk">
+  <div class="why-image-block">
+    <p class="why-quote">
+      A befektetés nem szerencsejáték — hanem döntés. Mi segítünk, hogy a döntés jó legyen.
+    </p>
+    <div class="why-author">
+      <div class="why-author-name">Kiss Zoltán</div>
+      <div class="why-author-role">Vezető értékpapír-tanácsadó</div>
+    </div>
+  </div>
+  <div>
+    <div class="section-tag">Miért minket válasszon?</div>
+    <h2 class="section-title">Tapasztalat,<br />amelyre számíthat</h2>
+    <p class="section-sub" style="margin-bottom: 2.5rem;">Több mint 12 éve segítjük ügyfeleinket abban, hogy okos pénzügyi döntéseket hozzanak.</p>
+    <div class="why-points">
+      <div class="why-point">
+        <div class="why-point-icon">🛡️</div>
+        <div class="why-point-text">
+          <h4>Licencelt és szabályozott</h4>
+          <p>MNB felügyelet alatt működő, teljes körű befektetési engedéllyel rendelkező cég.</p>
+        </div>
+      </div>
+      <div class="why-point">
+        <div class="why-point-icon">🤝</div>
+        <div class="why-point-text">
+          <h4>Személyes tanácsadás</h4>
+          <p>Nincs chatbot, nincs sablon — minden ügyfélnek dedikált tanácsadót biztosítunk.</p>
+        </div>
+      </div>
+      <div class="why-point">
+        <div class="why-point-icon">🔍</div>
+        <div class="why-point-text">
+          <h4>Átlátható díjstruktúra</h4>
+          <p>Nincsenek rejtett költségek. Minden díjat előre, egyértelműen közlünk.</p>
+        </div>
+      </div>
+      <div class="why-point">
+        <div class="why-point-icon">⚡</div>
+        <div class="why-point-text">
+          <h4>Gyors számlanyitás</h4>
+          <p>Online azonosítással 1-2 munkanapon belül megkezdheti a kereskedést.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────── PROCESS ──────────── -->
+<section id="folyamat">
+  <div class="section-header">
+    <div class="section-tag" style="color: var(--gold);">Hogyan működik?</div>
+    <h2 class="section-title">Három lépés a tőzsdéig</h2>
+    <p class="section-sub">Egyszerűsítettük a számlanyitás folyamatát, hogy mielőbb elkezdhesse a befektetést.</p>
+  </div>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-num">1</div>
+      <div class="step-title">Kapcsolatfelvétel</div>
+      <p class="step-desc">Töltse ki az űrlapot vagy hívjon minket. Tanácsadónk 24 órán belül visszahívja Önt.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">2</div>
+      <div class="step-title">Személyes konzultáció</div>
+      <p class="step-desc">Közösen feltérképezzük céljait, kockázatvállalási hajlandóságát és összeállítjuk a stratégiát.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">3</div>
+      <div class="step-title">Számlanyitás & kereskedés</div>
+      <p class="step-desc">Online azonosítással gyorsan megnyitjuk számláját — és már kezdhet is befektetni.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────── CONTACT ──────────── -->
+<section id="kapcsolat">
+  <div class="contact-info">
+    <div class="section-tag">Kapcsolat</div>
+    <h2 class="section-title">Lépjen velünk<br />kapcsolatba</h2>
+    <p class="section-sub" style="margin-bottom: 2.5rem;">Kérdése van? Tanácsadónk hamarosan visszahívja Önt. Semmi kötelezettség, csak egy egyszerű beszélgetés.</p>
+
+    <div class="contact-detail">
+      <div class="contact-detail-icon">📞</div>
+      <div>
+        <div class="contact-detail-label">Telefon</div>
+        <div class="contact-detail-value">+36 30 123 4567</div>
+      </div>
+    </div>
+    <div class="contact-detail">
+      <div class="contact-detail-icon">✉️</div>
+      <div>
+        <div class="contact-detail-label">E-mail</div>
+        <div class="contact-detail-value">info@del-szeg.hu</div>
+      </div>
+    </div>
+    <div class="contact-detail">
+      <div class="contact-detail-icon">📍</div>
+      <div>
+        <div class="contact-detail-label">Iroda</div>
+        <div class="contact-detail-value">1051 Budapest, Nádor utca 22.</div>
+      </div>
+    </div>
+    <div class="contact-detail">
+      <div class="contact-detail-icon">🕐</div>
+      <div>
+        <div class="contact-detail-label">Nyitvatartás</div>
+        <div class="contact-detail-value">H–P: 9:00 – 17:00</div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="contact-form" id="contact-form-wrapper">
+      <h3 class="form-title">Visszahívást kérek</h3>
+      <p class="form-sub">Adja meg elérhetőségét és tanácsadónk felveszi Önnel a kapcsolatot.</p>
+
+      <form id="contact-form" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nev">Teljes neve *</label>
+            <input type="text" id="nev" name="nev" placeholder="Pl. Kiss János" required />
+          </div>
+          <div class="form-group">
+            <label for="telefon">Telefonszám *</label>
+            <input type="tel" id="telefon" name="telefon" placeholder="+36 20 xxx xxxx" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">E-mail cím</label>
+          <input type="email" id="email" name="email" placeholder="pelda@email.hu" />
+        </div>
+        <div class="form-group">
+          <label for="erdeklodes">Érdeklődés tárgya</label>
+          <select id="erdeklodes" name="erdeklodes">
+            <option value="">– Válasszon –</option>
+            <option>Részvénykereskedés</option>
+            <option>Deviza (Forex)</option>
+            <option>Befektetési alapok</option>
+            <option>Állampapírok</option>
+            <option>Általános tanácsadás</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="uzenet">Üzenet (opcionális)</label>
+          <textarea id="uzenet" name="uzenet" placeholder="Írja le röviden, miben segíthetünk..."></textarea>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" id="adatved" name="adatved" required />
+          <label for="adatved">Elfogadom az <a href="#">adatkezelési tájékoztatót</a> és hozzájárulok adataim kezeléséhez a visszahívás céljából. *</label>
+        </div>
+        <button type="submit" class="btn-submit">Visszahívást kérek →</button>
+      </form>
+
+      <div class="form-success" id="form-success">
+        <div class="success-icon">✅</div>
+        <h3>Köszönjük megkeresését!</h3>
+        <p>Tanácsadónk 24 órán belül visszahívja Önt a megadott telefonszámon.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────── FOOTER ──────────── -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo">Dél-Szeg<span>.</span></div>
+      <div class="footer-tagline">Tőzsdei tanácsadás és brókerszolgáltatás</div>
+    </div>
+    <div class="footer-links">
+      <a href="#fooldal">Főoldal</a>
+      <a href="#szolgaltatasok">Szolgáltatások</a>
+      <a href="#rolunk">Rólunk</a>
+      <a href="#kapcsolat">Kapcsolat</a>
+      <a href="#">Adatvédelem</a>
+      <a href="#">ÁSZF</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Dél-Szeg Kft. – Minden jog fenntartva.</div>
+    <div class="footer-legal">MNB engedélyszám: H-EN-III/123/2013 · Adószám: 12345678-2-41</div>
+  </div>
+</footer>
+
+<script>
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
+  hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // Nav background on scroll
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    nav.style.boxShadow = window.scrollY > 20 ? '0 4px 24px rgba(0,0,0,0.3)' : 'none';
+  });
+
+  // Contact form submission
+  const form = document.getElementById('contact-form');
+  const successMsg = document.getElementById('form-success');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const nev = form.nev.value.trim();
+    const telefon = form.telefon.value.trim();
+    const adatved = form.adatved.checked;
+
+    if (!nev || !telefon || !adatved) {
+      alert('Kérjük töltse ki a kötelező mezőket (név, telefonszám, adatvédelmi hozzájárulás).');
+      return;
+    }
+
+    // Here you would normally send the data to your backend / email service
+    // For now we just show the success message
+    form.style.display = 'none';
+    successMsg.style.display = 'block';
+  });
+</script>
+</body>
+</html>
