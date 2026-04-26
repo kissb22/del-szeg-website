@@ -51,9 +51,13 @@
       font-size: 1.5rem;
       color: var(--white);
       letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
     }
 
     .logo span { color: var(--gold); }
+    .logo-icon { flex-shrink: 0; }
 
     .nav-links {
       display: flex;
@@ -704,6 +708,9 @@
       font-family: 'Playfair Display', serif;
       font-size: 1.4rem;
       color: var(--white);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
     }
 
     .footer-logo span { color: var(--gold); }
@@ -776,7 +783,14 @@
 
 <!-- ──────────── NAV ──────────── -->
 <nav>
-  <div class="logo">Dél-Szeg<span>.</span></div>
+  <div class="logo">
+    <svg class="logo-icon" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M15 1 L29 15 L15 29 L1 15 Z" stroke="#c9a84c" stroke-width="1.5" fill="rgba(201,168,76,0.07)"/>
+      <path d="M7 21 L12 13 L17 16 L23 8" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="23" cy="8" r="2.2" fill="#c9a84c"/>
+    </svg>
+    Dél-Szeg<span>.</span>
+  </div>
   <ul class="nav-links" id="nav-links">
     <li><a href="#fooldal">Főoldal</a></li>
     <li><a href="#szolgaltatasok">Szolgáltatások</a></li>
@@ -1065,7 +1079,14 @@
 <footer>
   <div class="footer-top">
     <div>
-      <div class="footer-logo">Dél-Szeg<span>.</span></div>
+      <div class="footer-logo">
+        <svg width="26" height="26" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15 1 L29 15 L15 29 L1 15 Z" stroke="#c9a84c" stroke-width="1.5" fill="rgba(201,168,76,0.07)"/>
+          <path d="M7 21 L12 13 L17 16 L23 8" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="23" cy="8" r="2.2" fill="#c9a84c"/>
+        </svg>
+        Dél-Szeg<span>.</span>
+      </div>
       <div class="footer-tagline">Tőzsdei tanácsadás és brókerszolgáltatás</div>
     </div>
     <div class="footer-links">
