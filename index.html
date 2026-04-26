@@ -1032,8 +1032,8 @@
           <input type="email" id="email" name="email" placeholder="pelda@email.hu" required />
         </div>
         <div class="form-group">
-          <label for="befektetes">Tervezett befektetési összeg <span class="form-label-note">(opcionális)</span></label>
-          <select id="befektetes" name="befektetes">
+          <label for="befektetes">Tervezett befektetési összeg *</label>
+          <select id="befektetes" name="befektetes" required>
             <option value="">– Válasszon –</option>
             <option value="500ezer-1m">500 000 – 1 000 000 Ft</option>
             <option value="1m-5m">1 000 000 – 5 000 000 Ft</option>
@@ -1139,10 +1139,11 @@
     const telefon = form.telefon.value.trim();
     const email = form.email.value.trim();
     const erdeklodes = form.erdeklodes.value;
+    const befektetes = form.befektetes.value;
     const tipusChecked = form.querySelectorAll('input[name="tipus"]:checked').length > 0;
     const adatved = form.adatved.checked;
 
-    if (!nev || !telefon || !email || !erdeklodes || !tipusChecked || !adatved) {
+    if (!nev || !telefon || !email || !erdeklodes || !befektetes || !tipusChecked || !adatved) {
       alert('Kérjük töltse ki az összes kötelező mezőt (*).');
       return;
     }
