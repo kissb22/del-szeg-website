@@ -636,6 +636,11 @@
 
     .form-group textarea { resize: vertical; min-height: 110px; }
 
+    .form-check-group { display: flex; gap: 1.5rem; margin-top: 0.25rem; }
+    .form-check-inline { display: flex; align-items: center; gap: 0.45rem; }
+    .form-check-inline input[type="checkbox"] { width: 17px; height: 17px; accent-color: var(--gold); cursor: pointer; flex-shrink: 0; }
+    .form-check-inline label { font-size: 0.875rem; font-weight: 500; color: var(--navy); cursor: pointer; }
+
     .form-check {
       display: flex;
       align-items: flex-start;
@@ -1021,6 +1026,19 @@
             <option>Állampapírok</option>
             <option>Általános tanácsadás</option>
           </select>
+        </div>
+        <div class="form-group">
+          <label>Ön...</label>
+          <div class="form-check-group">
+            <div class="form-check-inline">
+              <input type="checkbox" id="tipus-ceg" name="tipus" value="ceg" />
+              <label for="tipus-ceg">Cég</label>
+            </div>
+            <div class="form-check-inline">
+              <input type="checkbox" id="tipus-magan" name="tipus" value="maganszemely" />
+              <label for="tipus-magan">Magánszemély</label>
+            </div>
+          </div>
         </div>
         <div class="form-group">
           <label for="uzenet">Üzenet (opcionális)</label>
