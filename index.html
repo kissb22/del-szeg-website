@@ -1028,8 +1028,8 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="email">E-mail cím</label>
-          <input type="email" id="email" name="email" placeholder="pelda@email.hu" />
+          <label for="email">E-mail cím *</label>
+          <input type="email" id="email" name="email" placeholder="pelda@email.hu" required />
         </div>
         <div class="form-group">
           <label for="befektetes">Tervezett befektetési összeg <span class="form-label-note">(opcionális)</span></label>
@@ -1044,8 +1044,8 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="erdeklodes">Érdeklődés tárgya</label>
-          <select id="erdeklodes" name="erdeklodes">
+          <label for="erdeklodes">Érdeklődés tárgya *</label>
+          <select id="erdeklodes" name="erdeklodes" required>
             <option value="">– Válasszon –</option>
             <option>Részvénykereskedés</option>
             <option>Deviza (Forex)</option>
@@ -1055,7 +1055,7 @@
           </select>
         </div>
         <div class="form-group">
-          <label>Kinek keressük meg? <span class="form-label-note">(több is választható)</span></label>
+          <label>Kinek keressük meg? * <span class="form-label-note">(több is választható)</span></label>
           <div class="form-check-group">
             <div class="form-check-inline">
               <input type="checkbox" id="tipus-ceg" name="tipus" value="ceg" />
@@ -1137,10 +1137,13 @@
     e.preventDefault();
     const nev = form.nev.value.trim();
     const telefon = form.telefon.value.trim();
+    const email = form.email.value.trim();
+    const erdeklodes = form.erdeklodes.value;
+    const tipusChecked = form.querySelectorAll('input[name="tipus"]:checked').length > 0;
     const adatved = form.adatved.checked;
 
-    if (!nev || !telefon || !adatved) {
-      alert('Kérjük töltse ki a kötelező mezőket (név, telefonszám, adatvédelmi hozzájárulás).');
+    if (!nev || !telefon || !email || !erdeklodes || !tipusChecked || !adatved) {
+      alert('Kérjük töltse ki az összes kötelező mezőt (*).');
       return;
     }
 
